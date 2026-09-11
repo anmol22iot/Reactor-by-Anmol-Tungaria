@@ -45,24 +45,24 @@ export const TelemetryCard: React.FC<TelemetryCardProps> = ({ state }) => {
 
   // Compose dynamic engine state badge
   let engineStateBadge = 'INITIALIZING';
-  let engineStateClass = 'bg-slate-800 text-slate-300';
+  let engineStateClass = 'bg-slate-850 text-slate-100 border border-slate-600';
   let engineStateDesc = activePlanSummary;
 
   if (phase === 'IDLE') {
     engineStateBadge = 'STANDBY';
-    engineStateClass = 'bg-[#141b2d] text-slate-400';
+    engineStateClass = 'bg-[#141b2d] text-slate-200 border border-[#222f4c] font-semibold';
   } else if (phase === 'FAILURE_ENCOUNTERED') {
     engineStateBadge = 'FAULT_INTERRUPT';
-    engineStateClass = 'bg-rose-950 text-rose-300 border border-rose-800/40';
+    engineStateClass = 'bg-rose-950 text-rose-200 border border-rose-600 font-bold';
   } else if (['FAILURE_DETECTED', 'AUTONOMOUS_REPLANNING', 'AWAITING_APPROVAL'].includes(phase)) {
     engineStateBadge = 'REPLANNING_GRAPH';
-    engineStateClass = 'bg-purple-950 text-purple-300 border border-purple-800/40';
+    engineStateClass = 'bg-purple-950 text-purple-200 border border-purple-600 font-bold';
   } else if (phase === 'RECOVERY_EXECUTED') {
     engineStateBadge = 'EXECUTING_HEDGE';
-    engineStateClass = 'bg-cyan-950 text-cyan-300 border border-cyan-800/40';
+    engineStateClass = 'bg-cyan-950 text-cyan-200 border border-cyan-500 font-bold';
   } else if (isCompleted) {
     engineStateBadge = 'AUTO-RECOVERY COMPLETE';
-    engineStateClass = 'bg-purple-900/60 text-purple-300 border border-purple-700/50';
+    engineStateClass = 'bg-purple-950 text-purple-200 border border-purple-500 font-bold';
     engineStateDesc = 'Post-failure replanning executed. Dual-supplier hedge operational.';
   }
 
@@ -89,7 +89,7 @@ export const TelemetryCard: React.FC<TelemetryCardProps> = ({ state }) => {
             <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
               AI AGENT STATE TELEMETRY
             </h3>
-            <p className="text-[10px] text-slate-400">Real-time internal cognition & decision policy</p>
+            <p className="text-[10px] text-slate-300 font-medium">Real-time internal cognition & decision policy</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -106,7 +106,7 @@ export const TelemetryCard: React.FC<TelemetryCardProps> = ({ state }) => {
             )}
             <span>AI Reasoning</span>
           </button>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1a233a] text-slate-300 border border-[#222f4c]">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1a233a] text-slate-200 border border-[#222f4c] font-medium">
             Autonomous
           </span>
         </div>
@@ -115,51 +115,51 @@ export const TelemetryCard: React.FC<TelemetryCardProps> = ({ state }) => {
       {/* Telemetry Key-Value Matrix */}
       <div className="mt-4 space-y-3 font-mono text-xs flex-1">
         <div className="bg-[#141b2d]/60 p-3 rounded-lg border border-[#1a233a]">
-          <div className="text-[10px] text-slate-400 font-medium uppercase tracking-wider mb-1">
+          <div className="text-[10px] text-slate-300 font-semibold uppercase tracking-wider mb-1">
             Current Objective
           </div>
-          <div className="text-slate-100 font-medium">
+          <div className="text-white font-semibold">
             Protect & dispatch 500 critical orders prior to 18:00 cutoff
           </div>
         </div>
 
         <div className="bg-purple-950/20 p-3 rounded-lg border border-purple-800/30">
-          <div className="text-[10px] text-purple-400 font-bold uppercase tracking-wider mb-1 flex items-center justify-between">
+          <div className="text-[10px] text-purple-300 font-bold uppercase tracking-wider mb-1 flex items-center justify-between">
             <span>Current Engine State</span>
             <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[9px] ${engineStateClass}`}>
               {engineStateBadge}
             </span>
           </div>
-          <div className="text-purple-200 font-medium text-[11px] leading-relaxed">
+          <div className="text-purple-100 font-medium text-[11px] leading-relaxed">
             {engineStateDesc}
           </div>
         </div>
 
         <div className="bg-[#141b2d]/60 p-3 rounded-lg border border-[#1a233a]">
-          <div className="text-[10px] text-slate-400 font-medium uppercase tracking-wider mb-1">
+          <div className="text-[10px] text-slate-300 font-semibold uppercase tracking-wider mb-1">
             Active Plan Composition
           </div>
-          <div className="text-slate-200 flex items-center justify-between text-[11px]">
+          <div className="text-slate-100 font-medium flex items-center justify-between text-[11px]">
             <span>{planCompositionText}</span>
           </div>
         </div>
 
         {triggeringAnomaly && (
           <div className="bg-rose-950/20 p-3 rounded-lg border border-rose-900/30">
-            <div className="text-[10px] text-rose-400 font-bold uppercase tracking-wider mb-1">
+            <div className="text-[10px] text-rose-300 font-bold uppercase tracking-wider mb-1">
               Triggering Anomaly
             </div>
-            <div className="text-rose-200 text-[11px] leading-relaxed">
+            <div className="text-rose-100 font-medium text-[11px] leading-relaxed">
               {triggeringAnomaly}
             </div>
           </div>
         )}
 
         <div className="bg-emerald-950/20 p-3 rounded-lg border border-emerald-900/30">
-          <div className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider mb-1">
+          <div className="text-[10px] text-emerald-300 font-bold uppercase tracking-wider mb-1">
             Verification Status
           </div>
-          <div className="text-emerald-200 text-[11px]">
+          <div className="text-emerald-100 font-medium text-[11px]">
             {isCompleted
               ? 'Consignment dispatches confirmed with tracking tokens #TRK-9902 & #TRK-9903. 100% order volume satisfied.'
               : phase === 'IDLE'
@@ -171,25 +171,25 @@ export const TelemetryCard: React.FC<TelemetryCardProps> = ({ state }) => {
         {/* Gemini AI Cognition Insight Callout if queried */}
         {aiAnalysis && (
           <div className="bg-indigo-950/30 border border-indigo-600/40 p-3 rounded-lg text-indigo-200 text-[11px] leading-relaxed">
-            <div className="flex items-center justify-between mb-1 text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
+            <div className="flex items-center justify-between mb-1 text-[10px] font-bold text-indigo-300 uppercase tracking-wider">
               <span className="flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
                 Gemini Cognitive Reasoning ({aiSource})
               </span>
               <button
                 onClick={() => setAiAnalysis(null)}
-                className="text-slate-400 hover:text-white cursor-pointer"
+                className="text-slate-300 hover:text-white cursor-pointer"
               >
                 ✕
               </button>
             </div>
-            <p className="whitespace-pre-line text-slate-300">{aiAnalysis}</p>
+            <p className="whitespace-pre-line text-slate-100">{aiAnalysis}</p>
           </div>
         )}
       </div>
 
       {/* System Heartbeat indicator */}
-      <div className="mt-4 pt-3 border-t border-[#1a233a] flex items-center justify-between text-[11px] font-mono text-slate-500">
+      <div className="mt-4 pt-3 border-t border-[#1a233a] flex items-center justify-between text-[11px] font-mono text-slate-400 font-medium">
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
           <span>Policy: Adaptive Constraint Optimization</span>

@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
                   </span>
                 </h1>
               </div>
-              <p className="text-xs text-slate-400 font-medium">Autonomous Operational Recovery Engine</p>
+              <p className="text-xs text-slate-300 font-medium">Autonomous Operational Recovery Engine</p>
             </div>
           </div>
 
@@ -68,16 +68,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mission ID & System State Badges */}
           <div className="hidden lg:flex items-center space-x-3 text-xs font-mono">
             <div className="bg-[#141b2d] border border-[#222f4c] px-2.5 py-1 rounded flex items-center gap-1.5">
-              <span className="text-slate-500">MISSION:</span>
-              <span className="text-cyan-400 font-semibold tracking-wide">MSN-ORD-8821</span>
+              <span className="text-slate-400 font-medium">MISSION:</span>
+              <span className="text-cyan-300 font-bold tracking-wide">MSN-ORD-8821</span>
             </div>
             <div className="bg-[#141b2d] border border-[#222f4c] px-2.5 py-1 rounded flex items-center gap-1.5">
-              <span className="text-slate-500">LOOP:</span>
-              <span className="text-slate-300 font-semibold">CLOSED_LOOP_ACTIVE</span>
+              <span className="text-slate-400 font-medium">LOOP:</span>
+              <span className="text-white font-semibold">CLOSED_LOOP_ACTIVE</span>
             </div>
             <div className="bg-[#141b2d] border border-[#222f4c] px-2.5 py-1 rounded flex items-center gap-1.5">
-              <span className="text-slate-500">ENGINE:</span>
-              <span className="text-emerald-400 font-semibold flex items-center gap-1">
+              <span className="text-slate-400 font-medium">ENGINE:</span>
+              <span className="text-emerald-300 font-bold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE
               </span>
             </div>
@@ -86,29 +86,29 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Center Telemetry: Autonomous Loop Sequence Tracker */}
         <div className="hidden xl:flex items-center space-x-1.5 bg-[#0a0d14]/80 px-3 py-1.5 rounded-full border border-[#1a233a] text-[11px] font-mono">
-          <span className="text-slate-400 font-medium">PIPELINE:</span>
-          <span className={isGoalActive ? 'text-cyan-300 font-bold' : 'text-slate-500'}>GOAL</span>
-          <span className="text-slate-600">→</span>
-          <span className={isPlanActive ? 'text-blue-300 font-bold' : 'text-slate-500'}>PLAN</span>
-          <span className="text-slate-600">→</span>
-          <span className={isActionActive ? 'text-sky-300 font-bold' : 'text-slate-500'}>ACTION</span>
-          <span className="text-slate-600">→</span>
+          <span className="text-slate-300 font-bold">PIPELINE:</span>
+          <span className={isGoalActive ? 'text-cyan-300 font-bold' : 'text-slate-400 font-semibold'}>GOAL</span>
+          <span className="text-slate-500">→</span>
+          <span className={isPlanActive ? 'text-blue-300 font-bold' : 'text-slate-400 font-semibold'}>PLAN</span>
+          <span className="text-slate-500">→</span>
+          <span className={isActionActive ? 'text-sky-300 font-bold' : 'text-slate-400 font-semibold'}>ACTION</span>
+          <span className="text-slate-500">→</span>
           <span className={`px-1.5 py-0.5 rounded font-bold transition ${
-            isFailActive ? 'bg-rose-950/80 text-rose-300 border border-rose-700/60' : 'text-slate-600'
+            isFailActive ? 'bg-rose-950 text-rose-200 border border-rose-600' : 'text-slate-400 font-semibold'
           }`}>
             FAIL
           </span>
-          <span className="text-slate-600">→</span>
+          <span className="text-slate-500">→</span>
           <span className={`px-1.5 py-0.5 rounded font-bold transition ${
-            isReplanActive ? 'bg-purple-950/80 text-purple-300 border border-purple-700/60' : 'text-slate-600'
+            isReplanActive ? 'bg-purple-950 text-purple-200 border border-purple-600' : 'text-slate-400 font-semibold'
           }`}>
             REPLAN
           </span>
-          <span className="text-slate-600">→</span>
-          <span className={isExecActive ? 'text-cyan-300 font-bold' : 'text-slate-500'}>EXEC</span>
-          <span className="text-slate-600">→</span>
+          <span className="text-slate-500">→</span>
+          <span className={isExecActive ? 'text-cyan-300 font-bold' : 'text-slate-400 font-semibold'}>EXEC</span>
+          <span className="text-slate-500">→</span>
           <span className={`px-1.5 py-0.5 rounded font-bold transition flex items-center gap-1 ${
-            isVerifyActive ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'text-slate-600'
+            isVerifyActive ? 'bg-emerald-950 text-emerald-200 border border-emerald-500' : 'text-slate-400 font-semibold'
           }`}>
             VERIFY {isVerifyActive ? '✓' : ''}
           </span>
@@ -123,12 +123,12 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
               </span>
-              <span className="text-[11px] font-mono font-bold text-rose-300 tracking-wider">CHAOS</span>
+              <span className="text-[11px] font-mono font-bold text-rose-200 tracking-wider">CHAOS</span>
             </div>
             <select
               value={chaosMode}
               onChange={(e) => onChaosChange(e.target.value as ChaosMode)}
-              className="bg-[#0a0d14] text-slate-200 border border-[#222f4c] text-xs rounded px-2 py-1 font-mono focus:outline-none focus:border-rose-500 cursor-pointer"
+              className="bg-[#0a0d14] text-slate-100 border border-[#222f4c] text-xs rounded px-2 py-1 font-mono focus:outline-none focus:border-rose-500 cursor-pointer"
             >
               <option value="supplier_failure">Supplier A Failure (Core Demo)</option>
               <option value="capacity_reduction">Delivery Capacity -40%</option>
@@ -150,10 +150,10 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center space-x-1.5">
             <button
               onClick={onReset}
-              className="bg-[#1a233a] hover:bg-[#222f4c] text-slate-300 text-xs font-mono px-2.5 py-1.5 rounded-lg border border-[#273657] transition flex items-center gap-1.5 cursor-pointer"
+              className="bg-[#1a233a] hover:bg-[#222f4c] text-slate-200 text-xs font-mono px-2.5 py-1.5 rounded-lg border border-[#273657] transition flex items-center gap-1.5 cursor-pointer"
               title="Reset state machine to initial conditions"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+              <RotateCcw className="w-3.5 h-3.5 text-slate-300" />
               <span className="hidden sm:inline">Reset</span>
             </button>
 
@@ -164,7 +164,7 @@ export const Header: React.FC<HeaderProps> = ({
               className={`text-xs font-mono px-3 py-1.5 rounded-lg border transition flex items-center gap-1.5 cursor-pointer ${
                 isAutoPlaying
                   ? 'bg-amber-600 hover:bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-600/30'
-                  : 'bg-[#1a233a] hover:bg-[#222f4c] text-slate-200 border-[#273657]'
+                  : 'bg-[#1a233a] hover:bg-[#222f4c] text-slate-100 border-[#273657]'
               } ${isComplete ? 'opacity-50 cursor-not-allowed' : ''}`}
               title={isAutoPlaying ? 'Pause automatic progression' : 'Play autonomous recovery pipeline'}
             >
@@ -207,7 +207,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Hackathon Pitch Guide modal toggle */}
             <button
               onClick={onOpenPitchGuide}
-              className="bg-[#141b2d] hover:bg-[#1a233a] text-cyan-400 p-1.5 rounded-lg border border-[#222f4c] transition cursor-pointer"
+              className="bg-[#141b2d] hover:bg-[#1a233a] text-cyan-300 p-1.5 rounded-lg border border-[#222f4c] transition cursor-pointer"
               title="3-Minute Hackathon Demo Pitch Guide"
             >
               <HelpCircle className="w-4 h-4" />

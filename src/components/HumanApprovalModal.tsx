@@ -36,38 +36,38 @@ export const HumanApprovalModal: React.FC<HumanApprovalModalProps> = ({
         </div>
 
         <div className="mt-4 space-y-3 text-xs">
-          <p className="text-slate-300 leading-relaxed">
+          <p className="text-slate-200 font-medium leading-relaxed">
             REACTOR paused execution because the calculated recovery spend exceeds the autonomous authority limit.
           </p>
 
           <div className="bg-[#141b2d] p-3 rounded-lg border border-[#222f4c] space-y-2">
             <div className="flex justify-between">
-              <span className="text-slate-400">Authorized Autonomous Cap:</span>
+              <span className="text-slate-300 font-semibold">Authorized Autonomous Cap:</span>
               <span className="text-white font-bold">₹{budgetCap.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Replan Estimated Spend:</span>
-              <span className="text-rose-400 font-bold">₹{actualSpend.toLocaleString()}</span>
+              <span className="text-slate-300 font-semibold">Replan Estimated Spend:</span>
+              <span className="text-rose-200 font-bold">₹{actualSpend.toLocaleString()}</span>
             </div>
             <div className="flex justify-between pt-1.5 border-t border-[#1a233a]">
-              <span className="text-amber-400 font-semibold">Required Emergency Overdraft:</span>
-              <span className="text-amber-300 font-bold">+₹{overdraft.toLocaleString()}</span>
+              <span className="text-amber-300 font-bold">Required Emergency Overdraft:</span>
+              <span className="text-amber-200 font-bold">+₹{overdraft.toLocaleString()}</span>
             </div>
           </div>
 
-          <div className="bg-[#141b2d]/60 p-3 rounded-lg border border-[#1a233a]">
-            <span className="text-[10px] text-slate-400 block uppercase mb-1">Proposed Multi-Supplier Basket:</span>
-            <ul className="space-y-1 text-slate-300">
+          <div className="bg-[#141b2d] p-3 rounded-lg border border-[#1a233a]">
+            <span className="text-[10px] text-slate-300 block uppercase mb-1 font-bold">Proposed Multi-Supplier Basket:</span>
+            <ul className="space-y-1 text-slate-200">
               {selectedSuppliers.map((s, idx) => (
                 <li key={idx} className="flex justify-between">
                   <span>{s.supplier} ({s.units} units @ ETA {s.eta})</span>
-                  <span className="font-semibold text-white">₹{s.spend.toLocaleString()}</span>
+                  <span className="font-bold text-white">₹{s.spend.toLocaleString()}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <p className="text-[11px] text-slate-400 italic">
+          <p className="text-[11px] text-slate-300 italic font-medium">
             "Zero false positives. If rejected, orders will hard-stop at current inventory coverage (83%). If authorized, orders will be dispatched immediately."
           </p>
         </div>
@@ -75,7 +75,7 @@ export const HumanApprovalModal: React.FC<HumanApprovalModalProps> = ({
         <div className="mt-6 flex items-center justify-end space-x-3 pt-3 border-t border-[#1a233a]">
           <button
             onClick={onReject}
-            className="px-4 py-2 rounded-lg bg-[#141b2d] hover:bg-[#1a233a] text-slate-300 text-xs font-semibold border border-[#222f4c] transition cursor-pointer flex items-center gap-1.5"
+            className="px-4 py-2 rounded-lg bg-[#141b2d] hover:bg-[#1a233a] text-slate-200 text-xs font-bold border border-[#222f4c] transition cursor-pointer flex items-center gap-1.5"
           >
             <XCircle className="w-4 h-4 text-rose-400" />
             Reject & Enforce Stop

@@ -36,7 +36,7 @@ export const RecoveryHighlightCard: React.FC<RecoveryHighlightCardProps> = ({ st
             <RefreshCw className={`w-4 h-4 ${['AUTONOMOUS_REPLANNING', 'FAILURE_DETECTED'].includes(phase) ? 'animate-spin' : ''}`} />
           </div>
           <div>
-            <span className="text-[10px] font-mono uppercase font-bold text-purple-400 tracking-wider">
+            <span className="text-[10px] font-mono uppercase font-bold text-purple-300 tracking-wider">
               AUTONOMOUS RECOVERY EVENT #REC-01
             </span>
             <h4 className="text-sm font-bold text-white">
@@ -45,7 +45,7 @@ export const RecoveryHighlightCard: React.FC<RecoveryHighlightCardProps> = ({ st
           </div>
         </div>
 
-        <span className="text-[11px] font-mono px-3 py-1 rounded bg-purple-900/50 text-purple-300 border border-purple-700/50 flex items-center gap-1.5 self-start sm:self-auto">
+        <span className="text-[11px] font-mono px-3 py-1 rounded bg-purple-950 text-purple-200 border border-purple-600 flex items-center gap-1.5 self-start sm:self-auto font-semibold">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
           Autonomous Replanning: {isReplanned ? 'Successful' : 'Armed'}
         </span>
@@ -57,16 +57,16 @@ export const RecoveryHighlightCard: React.FC<RecoveryHighlightCardProps> = ({ st
         <div className={`p-2.5 rounded-lg border transition ${
           isFailPassed
             ? 'bg-rose-950/30 border-rose-800/40'
-            : 'bg-[#0f1420]/60 border-[#1a233a] opacity-50'
+            : 'bg-[#0f1420] border-[#222f4c] opacity-80'
         }`}>
-          <span className="text-[9px] text-rose-400 font-bold block mb-1 flex items-center justify-between">
+          <span className="text-[9px] text-rose-300 font-bold block mb-1 flex items-center justify-between">
             <span>1. DETECTED FAILURE</span>
-            {isFailPassed && <span className="text-rose-400">●</span>}
+            {isFailPassed && <span className="text-rose-300">●</span>}
           </span>
-          <span className="text-slate-200 text-[11px] font-semibold">
+          <span className="text-white text-[11px] font-bold">
             {chaosMode === 'api_timeout' ? 'Supplier A Timed Out' : 'Supplier A Rejected Order'}
           </span>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-slate-300 mt-0.5 font-medium">
             {chaosMode === 'api_timeout' ? 'HTTP 504 Unresponsive Gateway' : 'Capacity constraint at supplier depot'}
           </p>
         </div>
@@ -75,42 +75,42 @@ export const RecoveryHighlightCard: React.FC<RecoveryHighlightCardProps> = ({ st
         <div className={`p-2.5 rounded-lg border transition ${
           isStateUpdated
             ? 'bg-[#0f1420] border-cyan-700/50 shadow-sm'
-            : 'bg-[#0f1420]/60 border-[#1a233a] opacity-50'
+            : 'bg-[#0f1420] border-[#222f4c] opacity-80'
         }`}>
-          <span className="text-[9px] text-cyan-400 font-bold block mb-1 flex items-center justify-between">
+          <span className="text-[9px] text-cyan-300 font-bold block mb-1 flex items-center justify-between">
             <span>2. STATE UPDATED</span>
-            {isStateUpdated && <span className="text-cyan-400">●</span>}
+            {isStateUpdated && <span className="text-cyan-300">●</span>}
           </span>
-          <span className="text-slate-200 text-[11px] font-semibold">Supplier A Blacklisted</span>
-          <p className="text-[10px] text-slate-400 mt-0.5">Marked unavailable in active graph</p>
+          <span className="text-white text-[11px] font-bold">Supplier A Blacklisted</span>
+          <p className="text-[10px] text-slate-300 mt-0.5 font-medium">Marked unavailable in active graph</p>
         </div>
 
         {/* 3. Replanning */}
         <div className={`p-2.5 rounded-lg border transition ${
           isReplanned
             ? 'bg-purple-950/30 border-purple-800/40 shadow-sm'
-            : 'bg-[#0f1420]/60 border-[#1a233a] opacity-50'
+            : 'bg-[#0f1420] border-[#222f4c] opacity-80'
         }`}>
-          <span className="text-[9px] text-purple-400 font-bold block mb-1 flex items-center justify-between">
+          <span className="text-[9px] text-purple-300 font-bold block mb-1 flex items-center justify-between">
             <span>3. REPLANNING</span>
-            {isReplanned && <span className="text-purple-400">●</span>}
+            {isReplanned && <span className="text-purple-300">●</span>}
           </span>
-          <span className="text-slate-200 text-[11px] font-semibold">{replanTitle}</span>
-          <p className="text-[10px] text-slate-400 mt-0.5">{replanDesc}</p>
+          <span className="text-white text-[11px] font-bold">{replanTitle}</span>
+          <p className="text-[10px] text-slate-300 mt-0.5 font-medium">{replanDesc}</p>
         </div>
 
         {/* 4. Outcome Verified */}
         <div className={`p-2.5 rounded-lg border transition ${
           isVerified
             ? 'bg-emerald-950/30 border-emerald-800/40 shadow-sm'
-            : 'bg-[#0f1420]/60 border-[#1a233a] opacity-50'
+            : 'bg-[#0f1420] border-[#222f4c] opacity-80'
         }`}>
-          <span className="text-[9px] text-emerald-400 font-bold block mb-1 flex items-center justify-between">
+          <span className="text-[9px] text-emerald-300 font-bold block mb-1 flex items-center justify-between">
             <span>4. OUTCOME VERIFIED</span>
-            {isVerified && <span className="text-emerald-400">✓</span>}
+            {isVerified && <span className="text-emerald-300">✓</span>}
           </span>
-          <span className="text-slate-200 text-[11px] font-semibold">500 / 500 Orders Intact</span>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <span className="text-white text-[11px] font-bold">500 / 500 Orders Intact</span>
+          <p className="text-[10px] text-slate-300 mt-0.5 font-medium">
             Spend: ₹{displaySpend.toLocaleString()} (under ₹{budgetCap.toLocaleString()} cap)
           </p>
         </div>

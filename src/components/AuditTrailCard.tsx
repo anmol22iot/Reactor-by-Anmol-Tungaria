@@ -24,15 +24,15 @@ export const AuditTrailCard: React.FC<AuditTrailCardProps> = ({ records }) => {
           <FileText className="w-3.5 h-3.5 text-sky-400" />
           Execution Tool Audit Trail
         </span>
-        <span className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
-          <Database className="w-3 h-3 text-cyan-400" />
+        <span className="text-[10px] font-mono text-slate-300 font-semibold flex items-center gap-1">
+          <Database className="w-3 h-3 text-cyan-300" />
           FastAPI / SQLite Sync
         </span>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full text-left font-mono text-[11px]">
-          <thead className="text-[9px] text-slate-500 uppercase border-b border-[#1a233a] pb-1">
+          <thead className="text-[9px] text-slate-300 uppercase border-b border-[#1a233a] pb-1 font-bold tracking-wider">
             <tr>
               <th className="py-1">Time</th>
               <th className="py-1">Action Tool</th>
@@ -40,23 +40,23 @@ export const AuditTrailCard: React.FC<AuditTrailCardProps> = ({ records }) => {
               <th className="py-1 text-right">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#141b2d] text-slate-300">
+          <tbody className="divide-y divide-[#141b2d] text-slate-200">
             {displayRecords.map((r) => {
               const isFail = r.status === 'FAILURE';
               return (
-                <tr key={r.id} className={isFail ? 'bg-rose-950/20' : ''}>
-                  <td className={`py-1.5 ${isFail ? 'text-rose-400 font-bold' : 'text-slate-500'}`}>
+                <tr key={r.id} className={isFail ? 'bg-rose-950/30' : ''}>
+                  <td className={`py-1.5 ${isFail ? 'text-rose-200 font-bold' : 'text-slate-300 font-medium'}`}>
                     {r.time}
                   </td>
                   <td>
-                    <code className={isFail ? 'text-rose-300 font-semibold' : 'text-cyan-400'}>
+                    <code className={isFail ? 'text-rose-200 font-bold' : 'text-cyan-300 font-medium'}>
                       {r.tool}
                     </code>
                   </td>
-                  <td className={isFail ? 'text-rose-300 font-semibold' : 'text-slate-300'}>
+                  <td className={isFail ? 'text-rose-100 font-semibold' : 'text-slate-200 font-medium'}>
                     {r.result}
                   </td>
-                  <td className={`py-1.5 text-right font-bold ${isFail ? 'text-rose-400' : 'text-emerald-400'}`}>
+                  <td className={`py-1.5 text-right font-bold ${isFail ? 'text-rose-200' : 'text-emerald-300'}`}>
                     {r.status}
                   </td>
                 </tr>

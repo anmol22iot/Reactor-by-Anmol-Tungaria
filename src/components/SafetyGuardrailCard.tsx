@@ -26,33 +26,33 @@ export const SafetyGuardrailCard: React.FC<SafetyGuardrailCardProps> = ({
             SAFETY & AUDIT GUARDRAIL
           </span>
         </div>
-        <span className="text-[10px] font-mono text-slate-400 bg-[#141b2d] px-2 py-0.5 rounded border border-[#222f4c]">
+        <span className="text-[10px] font-mono text-slate-200 bg-[#141b2d] px-2 py-0.5 rounded border border-[#222f4c] font-semibold">
           Autonomous Tier: L3
         </span>
       </div>
 
       <div className="bg-[#0a0d14] border border-amber-900/30 rounded-lg p-3 text-xs font-mono">
         <div className="flex justify-between items-start mb-1.5">
-          <span className="text-slate-300 font-semibold">Active Risk Assessment:</span>
+          <span className="text-slate-200 font-bold">Active Risk Assessment:</span>
           {isHighRisk ? (
-            <span className="text-rose-400 font-bold text-[10px] bg-rose-950/80 px-2 py-0.5 rounded border border-rose-700/60 animate-pulse flex items-center gap-1">
+            <span className="text-rose-200 font-bold text-[10px] bg-rose-950 px-2 py-0.5 rounded border border-rose-600 animate-pulse flex items-center gap-1">
               <AlertOctagon className="w-3 h-3" />
               HIGH RISK (₹{(actualSpend / 1000).toFixed(1)}k &gt; ₹{(budgetCap / 1000).toFixed(1)}k cap)
             </span>
           ) : (
-            <span className="text-emerald-400 font-bold text-[10px] bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-800/40">
+            <span className="text-emerald-200 font-bold text-[10px] bg-emerald-950 px-2 py-0.5 rounded border border-emerald-600">
               LOW RISK (₹{(actualSpend > 0 ? (actualSpend / 1000).toFixed(1) : '13.8')}k &lt; ₹{(budgetCap / 1000).toFixed(1)}k cap)
             </span>
           )}
         </div>
 
-        <p className="text-slate-400 text-[11px] leading-relaxed mb-3">
+        <p className="text-slate-300 text-[11px] leading-relaxed mb-3">
           Autonomous procurement executed automatically within pre-authorized emergency bounds. If expenditure had exceeded ₹{budgetCap.toLocaleString()} or required expedited air-freight (&gt;₹80,000), execution would instantly pause for supervisor authorization.
         </p>
 
         {isPausedForApproval && (
           <div className="mb-3 p-2.5 rounded bg-rose-950/50 border border-rose-700/60 flex items-center justify-between">
-            <span className="text-rose-200 text-xs font-semibold">
+            <span className="text-rose-200 text-xs font-bold">
               Action Required: Emergency Spend Authorization
             </span>
             <button
@@ -64,9 +64,9 @@ export const SafetyGuardrailCard: React.FC<SafetyGuardrailCardProps> = ({
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-2 border-t border-[#141b2d] text-[10px] text-slate-500">
+        <div className="flex items-center justify-between pt-2 border-t border-[#141b2d] text-[10px] text-slate-300 font-medium">
           <span>Threshold: ₹{budgetCap.toLocaleString()} Max</span>
-          <span className={humanOverridesPending > 0 ? 'text-amber-400 font-bold' : 'text-slate-400'}>
+          <span className={humanOverridesPending > 0 ? 'text-amber-300 font-bold' : 'text-slate-300 font-semibold'}>
             {humanOverridesPending} Overrides Pending
           </span>
         </div>

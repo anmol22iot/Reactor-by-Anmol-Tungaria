@@ -17,16 +17,16 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({ state }) =
         <div>
           <h3 className="text-sm font-bold text-white font-mono flex items-center gap-2">
             <span>LIVE AUTONOMOUS EXECUTION TRACE</span>
-            <span className="text-[10px] font-normal px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-600">
               Chronological Event Bus
             </span>
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-300 mt-0.5 font-medium">
             Deterministic trace of perception, cognition, actions, failure detection, and recovery
           </p>
         </div>
-        <div className="flex items-center space-x-2 text-[11px] font-mono text-slate-400">
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#141b2d] border border-[#222f4c]">
+        <div className="flex items-center space-x-2 text-[11px] font-mono text-slate-300">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#141b2d] border border-[#222f4c] font-semibold">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
             {eventCount} Events Logged
           </span>
@@ -35,11 +35,11 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({ state }) =
 
       {traceEvents.length === 0 ? (
         /* Empty / Initial preview mode before starting */
-        <div className="py-12 text-center text-slate-500 font-mono text-xs">
-          <Zap className="w-8 h-8 mx-auto mb-2 text-sky-400/50 animate-pulse" />
-          <p className="text-slate-300 font-medium">Pipeline Armed in Standby Mode</p>
-          <p className="text-[11px] mt-1 text-slate-500">
-            Click <strong className="text-sky-400">"Start Mission"</strong> or <strong className="text-emerald-400">"Auto-Play"</strong> to witness autonomous closed-loop recovery.
+        <div className="py-12 text-center text-slate-400 font-mono text-xs">
+          <Zap className="w-8 h-8 mx-auto mb-2 text-sky-400 animate-pulse" />
+          <p className="text-slate-200 font-bold text-sm">Pipeline Armed in Standby Mode</p>
+          <p className="text-[11px] mt-1 text-slate-300 font-medium">
+            Click <strong className="text-sky-300">"Start Mission"</strong> or <strong className="text-emerald-300">"Auto-Play"</strong> to witness autonomous closed-loop recovery.
           </p>
         </div>
       ) : (
@@ -85,99 +85,99 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({ state }) =
                 {/* Event Card Content */}
                 {isFailure ? (
                   /* 04. REAL-WORLD FAILURE ENCOUNTERED */
-                  <div className="bg-rose-950/40 border-2 border-rose-600/70 p-3.5 rounded-lg shadow-lg relative">
-                    <div className="flex items-center justify-between text-[10px] text-rose-400 mb-1">
+                  <div className="bg-rose-950/60 border-2 border-rose-600 p-3.5 rounded-lg shadow-lg relative">
+                    <div className="flex items-center justify-between text-[10px] text-rose-300 mb-1">
                       <span className="font-extrabold uppercase tracking-wider flex items-center gap-1.5">
-                        <AlertCircle className="w-3.5 h-3.5" />
+                        <AlertCircle className="w-3.5 h-3.5 text-rose-400" />
                         {event.stepNumber}. {event.title}
                       </span>
-                      <span className="text-rose-300 font-bold">{event.timestamp}</span>
+                      <span className="text-rose-200 font-bold">{event.timestamp}</span>
                     </div>
                     <p className="text-white font-bold text-[13px]">{event.description.split('. ')[0]}.</p>
                     {event.resultPayload && (
-                      <div className="mt-1.5 bg-rose-950/80 p-2 rounded border border-rose-800/50 text-[11px] text-rose-200">
-                        <span>Signal: <code>{event.resultPayload}</code></span>
+                      <div className="mt-1.5 bg-rose-950 p-2 rounded border border-rose-700 text-[11px] text-rose-100 font-medium">
+                        <span>Signal: <code className="text-rose-200 font-bold">{event.resultPayload}</code></span>
                       </div>
                     )}
-                    <p className="text-slate-300 text-[10px] mt-2 italic">
+                    <p className="text-slate-300 text-[10px] mt-2 italic font-medium">
                       Normal chatbots or static scripts halt here with an error. REACTOR autonomously catches the signal.
                     </p>
                   </div>
                 ) : isReplan ? (
                   /* 06. AUTONOMOUS REPLANNING & BUDGET OPTIMIZATION */
-                  <div className="bg-purple-950/30 border border-purple-800/50 p-3.5 rounded-lg hover:border-purple-500/50 transition">
-                    <div className="flex items-center justify-between text-[10px] text-purple-400 mb-1">
+                  <div className="bg-purple-950/40 border border-purple-600 p-3.5 rounded-lg hover:border-purple-400 transition shadow-md">
+                    <div className="flex items-center justify-between text-[10px] text-purple-300 mb-1">
                       <span className="font-bold uppercase tracking-wider">
                         {event.stepNumber}. {event.title}
                       </span>
-                      <span className="text-purple-300">{event.timestamp}</span>
+                      <span className="text-purple-200 font-semibold">{event.timestamp}</span>
                     </div>
-                    <p className="text-white font-medium">{event.description.split('Total')[0]}</p>
+                    <p className="text-white font-semibold">{event.description.split('Total')[0]}</p>
                     
                     {/* Multi-supplier split cards */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 text-[11px]">
-                      <div className="bg-[#0a0d14]/90 p-2 rounded border border-[#222f4c]">
+                      <div className="bg-[#0a0d14] p-2 rounded border border-[#222f4c] text-slate-200">
                         <span className="text-purple-300 font-bold">Supplier B:</span> 50 units @ ₹160/unit = ₹8,000 (Delivery 17:15)
                       </div>
-                      <div className="bg-[#0a0d14]/90 p-2 rounded border border-[#222f4c]">
+                      <div className="bg-[#0a0d14] p-2 rounded border border-[#222f4c] text-slate-200">
                         <span className="text-purple-300 font-bold">Supplier C:</span> 35 units @ ₹165/unit = ₹5,800 (Delivery 17:30)
                       </div>
                     </div>
 
-                    <div className="mt-2 text-[10px] text-emerald-400 flex items-center justify-between pt-1.5 border-t border-purple-900/40">
+                    <div className="mt-2 text-[10px] text-emerald-300 font-semibold flex items-center justify-between pt-1.5 border-t border-purple-900/60">
                       <span>Total Combined Spend: ₹13,800</span>
                       <span>Constraint Verified: Under ₹15,000 Maximum Budget Cap ✓</span>
                     </div>
                   </div>
                 ) : isComplete ? (
                   /* 08. INDEPENDENT VERIFICATION — MISSION COMPLETE */
-                  <div className="bg-emerald-950/40 border-2 border-emerald-600/70 p-3.5 rounded-lg shadow-lg">
-                    <div className="flex items-center justify-between text-[10px] text-emerald-400 mb-1">
+                  <div className="bg-emerald-950/50 border-2 border-emerald-500 p-3.5 rounded-lg shadow-lg">
+                    <div className="flex items-center justify-between text-[10px] text-emerald-300 mb-1">
                       <span className="font-bold uppercase tracking-wider flex items-center gap-1.5">
-                        <CheckCircle className="w-3.5 h-3.5" />
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
                         {event.stepNumber}. {event.title}
                       </span>
-                      <span className="text-emerald-300 font-bold">{event.timestamp} (Total Loop: 25s)</span>
+                      <span className="text-emerald-200 font-bold">{event.timestamp} (Total Loop: 25s)</span>
                     </div>
                     <p className="text-white font-bold text-[13px]">
                       500 / 500 Orders Protected. Zero Manual Overrides Required.
                     </p>
                     <div className="mt-2 grid grid-cols-3 gap-2 text-[10px]">
-                      <div className="bg-emerald-900/40 p-1.5 rounded text-emerald-200 border border-emerald-700/40 text-center">
+                      <div className="bg-emerald-900/60 p-1.5 rounded text-emerald-100 border border-emerald-600 text-center font-bold">
                         ✓ 100% Volume Met
                       </div>
-                      <div className="bg-emerald-900/40 p-1.5 rounded text-emerald-200 border border-emerald-700/40 text-center">
+                      <div className="bg-emerald-900/60 p-1.5 rounded text-emerald-100 border border-emerald-600 text-center font-bold">
                         ✓ Spend: ₹13,800 ≤ ₹15k
                       </div>
-                      <div className="bg-emerald-900/40 p-1.5 rounded text-emerald-200 border border-emerald-700/40 text-center">
+                      <div className="bg-emerald-900/60 p-1.5 rounded text-emerald-100 border border-emerald-600 text-center font-bold">
                         ✓ Estimated 17:30 &lt; 18:00
                       </div>
                     </div>
                   </div>
                 ) : (
                   /* Standard Steps (01, 02, 03, 05, 07) */
-                  <div className="bg-[#141b2d]/70 border border-[#1a233a] p-3 rounded-lg hover:border-sky-500/40 transition">
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-                      <span className={`font-bold uppercase tracking-wider ${event.badgeColor || 'text-sky-400'}`}>
+                  <div className="bg-[#141b2d] border border-[#1a233a] p-3 rounded-lg hover:border-sky-500/50 transition">
+                    <div className="flex items-center justify-between text-[10px] text-slate-300 mb-1 font-semibold">
+                      <span className={`font-bold uppercase tracking-wider ${event.badgeColor || 'text-sky-300'}`}>
                         {event.stepNumber}. {event.title}
                       </span>
-                      <span>{event.timestamp}</span>
+                      <span className="text-slate-300">{event.timestamp}</span>
                     </div>
-                    <p className="text-slate-200">{event.description}</p>
+                    <p className="text-slate-100 font-medium">{event.description}</p>
 
                     {event.tool && (
-                      <div className="mt-2 text-[11px] bg-[#0a0d14]/90 p-2 rounded border border-[#222f4c] flex justify-between items-center">
-                        <span>Action: <code className="text-sky-300">{event.tool}</code></span>
-                        <span className="text-emerald-400 font-semibold text-[10px]">EXECUTED</span>
+                      <div className="mt-2 text-[11px] bg-[#0a0d14] p-2 rounded border border-[#222f4c] flex justify-between items-center text-slate-200">
+                        <span>Action: <code className="text-sky-300 font-bold">{event.tool}</code></span>
+                        <span className="text-emerald-300 font-bold text-[10px]">EXECUTED</span>
                       </div>
                     )}
 
                     {event.details && event.details.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-2 text-[10px] text-slate-400">
+                      <div className="mt-2 flex flex-wrap gap-2 text-[10px] text-slate-300">
                         {event.details.map((d, i) => (
-                          <span key={i} className="bg-[#0a0d14] px-2 py-0.5 rounded border border-[#222f4c]">
-                            <span className="text-slate-500">{d.label}: </span>
-                            <span className="text-slate-200">{d.value}</span>
+                          <span key={i} className="bg-[#0a0d14] px-2 py-0.5 rounded border border-[#222f4c] font-medium">
+                            <span className="text-slate-400 font-semibold">{d.label}: </span>
+                            <span className="text-slate-100 font-bold">{d.value}</span>
                           </span>
                         ))}
                       </div>
