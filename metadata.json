@@ -1,0 +1,6 @@
+{
+  "name": "REACTOR — Autonomous Operational Recovery Engine",
+  "description": "Autonomous operational recovery engine simulating closed-loop observation, failure detection, dynamic multi-supplier replanning, and independent outcome verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
